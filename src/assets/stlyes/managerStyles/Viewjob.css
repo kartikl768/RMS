@@ -1,0 +1,160 @@
+/* --- Root Variables for colors --- */
+:root {
+  --primary-color: #007bff;
+  --text-dark: #212529;
+  --text-light: #6c757d;
+  --border-color: #dee2e6;
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* --- Base Styles --- */
+.viewjob-container {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  padding: 2rem;
+}
+
+.viewjob-header {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.viewjob-subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+/* --- Table Styles --- */
+.table-wrapper {
+  background-color: var(--bg-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow);
+  overflow-x: auto; /* Adds horizontal scroll for small screens */
+}
+
+.applicants-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.applicants-table th,
+.applicants-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.applicants-table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  background-color: var(--bg-light);
+}
+
+.applicants-table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+/* --- Status Chip Styles --- */
+.status-chip {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px; /* Pill shape */
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #664d03;
+}
+
+.status-interview {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.status-hired {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* --- Resume Link Style --- */
+.resume-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.resume-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .viewjob-container {
+    padding: 1rem;
+  }
+  
+  .viewjob-header {
+    font-size: 1.5rem;
+  }
+
+  .viewjob-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .table-wrapper {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Make table cells stack on smaller screens if needed (mobile-friendly approach) */
+  .applicants-table thead {
+    display: none; /* Hide header on mobile */
+  }
+
+  .applicants-table, .applicants-table tbody, .applicants-table tr, .applicants-table td {
+    display: block; /* Treat table elements as blocks */
+    width: 100%;
+  }
+
+  .applicants-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .applicants-table td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+
+  .applicants-table td::before {
+    content: attr(data-label); /* Display header text */
+    position: absolute;
+    left: 1.5rem;
+    width: calc(50% - 1.5rem);
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+}
