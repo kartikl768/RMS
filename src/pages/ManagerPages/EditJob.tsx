@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import '../assets/stlyes/managerStyles/Navbar.css';
+
 import Navbar from "../../components/managerComponents/Navbar";
 import { useParams, useNavigate } from "react-router-dom";
-import type { JobFormData } from '../../services/types';
-import { ManagerService } from "../../services/ManagerService";
+import type { JobFormData } from '../../ManagerTypes/types';
+import { ManagerService } from "../../ManagerTypes/ManagerService";
 
 
 const departments = [
@@ -38,31 +38,31 @@ function EditJob() {
 
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-  if (jobId) {
-    ManagerService.getJobbyId(Number(jobId))
-      .then((res) => {
-        const job = res.data;
-        setFormData({
-          department: job.department || "",
-          jobTitle: job.jobTitle || "",
-          jobDescription: job.jobDescription || "",
-          yearsExperience: job.yearsExperience?.toString() || "",
-          requiredSkills: job.requiredSkills || "",
-          numberOfOpenings: job.numberOfOpenings?.toString() || "",
-          numberOfRounds: job.numberOfRounds?.toString() || "3",
-          date: job.date || "",
-          managerId: job.managerId || 17,
+  useEffect(() => {
+    if (jobId) {
+      ManagerService.getJobbyId(Number(jobId))
+        .then((res) => {
+          const job = res.data;
+          setFormData({
+            department: job.department || "",
+            jobTitle: job.jobTitle || "",
+            jobDescription: job.jobDescription || "",
+            yearsExperience: job.yearsExperience?.toString() || "",
+            requiredSkills: job.requiredSkills || "",
+            numberOfOpenings: job.numberOfOpenings?.toString() || "",
+            numberOfRounds: job.numberOfRounds?.toString() || "3",
+            date: job.date || "",
+            managerId: job.managerId || 17,
+          });
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error("Failed to fetch job:", err);
+          alert("Failed to load job details.");
+          setLoading(false);
         });
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch job:", err);
-        alert("Failed to load job details.");
-        setLoading(false);
-      });
-  }
-}, [jobId]);
+    }
+  }, [jobId]);
 
 
   const validateForm = () => {

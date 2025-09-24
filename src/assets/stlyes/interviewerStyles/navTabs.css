@@ -1,0 +1,24 @@
+.nav-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.nav-tab {
+  padding: 1rem 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-bottom: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.nav-tab:hover {
+  color: var(--color-text);
+}
+
+.nav-tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}

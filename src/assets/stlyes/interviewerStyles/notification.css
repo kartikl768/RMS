@@ -1,0 +1,27 @@
+.success-notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-success);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-md);
+  transform: translateX(120%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1100;
+}
+
+.success-notification.show {
+  transform: translateX(0);
+}
+
+.success-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.success-icon {
+  font-weight: bold;
+}
