@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { ManagerService } from '../../services/ManagerService';
+import { ManagerService } from '../../ManagerTypes/ManagerService';
 import Alert from '@mui/material/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

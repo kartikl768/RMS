@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../../assets/stlyes/managerStyles/Jobform.css";
-import { ManagerService } from '../../services/ManagerService';
-import type { JobFormData } from '../../services/types';
-import { skills } from '../../services/Skills';
+import { ManagerService } from '../../ManagerTypes/ManagerService';
+import type { JobFormData } from '../../ManagerTypes/types';
+import { skills } from '../../ManagerTypes/Skills';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
@@ -177,9 +177,9 @@ function JobForm() {
               options={skills.map(option => option.label)}
               sx={{ width: 500 }}
               renderInput={(params) => (
-                <TextField 
-                  {...params} 
-                  label="Required Skills" 
+                <TextField
+                  {...params}
+                  label="Required Skills"
                   placeholder="e.g., .NET, Communication, Teamwork"
                 />
               )}

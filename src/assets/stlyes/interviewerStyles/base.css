@@ -1,0 +1,31 @@
+/* Base colors and typography */
+:root {
+  --color-background: #f9fafb;
+  --color-surface: #fff;
+  --color-primary: #21808d;
+  --color-primary-hover: #1c6f7a;
+  --color-secondary: #f3f4f6;
+  --color-border: #e5e7eb;
+  --color-text: #111827;
+  --color-text-secondary: #6b7280;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+
+  --radius-base: 8px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  --font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 600;
+}
