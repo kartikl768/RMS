@@ -1,23 +1,28 @@
 import axios from 'axios';
-import type { JobFormData } from './types'; 
+import type { JobFormData } from './types';
 
+
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('jwtToken');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 export class ManagerService {
-    static baseUrl = "http://localhost:5140/api/JobRequirement";
-    
+  static baseUrl = "http://localhost:5109/api/manager/jobrequirements";
 
-    static getAllJobs = () => axios.get(this.baseUrl);
-    
-    static getJobbyId = (id: number) => axios.get(`${this.baseUrl}/${id}`);
+  static getAllJobs = () => axios.get(this.baseUrl);
 
-    static addJob = (jobData: JobFormData) => axios.post(this.baseUrl, jobData);
+  static getJobById = (id: number) => axios.get(`${this.baseUrl}/${id}`);
 
-    static deleteJobbyId = (id: number) => {
-        const url = `${this.baseUrl}/${id}`;
-        return axios.delete(url);
-    };
+  static addJob = (jobData: JobFormData) => axios.post(this.baseUrl, jobData);
 
-    static updateJobById = (id: number, J: JobFormData) => {
-        const url = `${this.baseUrl}/${id}`;
-        return axios.put(url, J);
-    };
+  static deleteJobById = (id: number) => axios.delete(`${this.baseUrl}/${id}`);
+
+  static updateJobById = (id: number, jobData: JobFormData) =>
+    axios.put(`${this.baseUrl}/${id}`, jobData);
 }

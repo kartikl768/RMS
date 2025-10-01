@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "http://localhost:5000/api/interviews"; // update with your BE endpoint
+const API_BASE = "http://localhost:5109/api/manager/JobRequirements"; // update with your BE endpoint
 
 export const getUpcomingInterviews = async () => {
   const res = await axios.get(`${API_BASE}/upcoming`);

@@ -44,23 +44,23 @@ const Table: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    ManagerService.getAllJobs()
-      .then((res) => {
-        setJobs(res.data);
-      })
-      .catch((err) => {
-        setError('Failed to fetch Jobs');
-        console.error(err);
-      });
-  }, []);
+  const token = localStorage.getItem('jwtToken');
+  if (!token) {
+    setError('Authentication token missing.');
+    return;
+  }
+  ManagerService.getAllJobs()
+    .then((res) => {
+      setJobs(res.data);
+    })
+    .catch((err) => {
+      setError('Failed to fetch Jobs');
+      console.error(err);
+    });
+}, []);
 
   const handleEdit = (id: number) => {
     navigate(`/edit/${id}`);
-  };
-
-  const handleDelete = (id: number) => {
-    ManagerService.deleteJobbyId(id);
-    console.log('Deleted successfully!');
   };
 
   return (
@@ -105,12 +105,12 @@ const Table: React.FC = () => {
                       >
                         Edit
                       </button>
-                      <button
+                      {/* <button
                         className="btn btn-danger btn-sm"
                         onClick={() => handleDelete(job.requirementId)}
                       >
                         Close
-                      </button>
+                      </button> */}
                     </td>
                   </tr>
                 ))}
